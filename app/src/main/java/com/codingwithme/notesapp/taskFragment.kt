@@ -65,7 +65,7 @@ class taskFragment : BaseFragment() {
 
         _binding?.recycler?.setHasFixedSize(true)
 
-        _binding?.recycler?.layoutManager = StaggeredGridLayoutManager(2,
+        _binding?.recycler?.layoutManager = StaggeredGridLayoutManager(1,
             StaggeredGridLayoutManager.VERTICAL)
 
         launch {
