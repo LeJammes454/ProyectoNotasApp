@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ColorBlueNote"
+    android:background="#7D7C81"
     tools:context=".MainActivity">
 
     <ImageView
@@ -58,9 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
         android:ellipsize="end"
         android:fontFamily="@font/manrope_bold"
         android:maxLines="1"
@@ -69,6 +68,7 @@
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_8ssp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etNoteTitle" />
 
@@ -82,13 +82,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDateTime">
 
-
-        <View
-            android:id="@+id/colorView"
-            android:layout_width="@dimen/_5sdp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:background="@color/ColorBlue" />
 
         <EditText
             android:id="@+id/etNoteSubTitle"
@@ -267,6 +260,14 @@
             android:layout_gravity="center"
             android:src="@drawable/img_bar" />
     </FrameLayout>
+
+    <View
+        android:id="@+id/colorView"
+        android:layout_width="367dp"
+        android:layout_height="10dp"
+        android:background="@color/ColorBlue"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
