@@ -42,8 +42,7 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
     private var taskId = -1
 
     private var _binding: FragmentCreateTaskBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -88,6 +87,7 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
                 context?.let {
                     var tasks = TaskDatabase.getDatabase(it).taskDao().getSpecificTask(taskId)
                     _binding?.colorView?.setBackgroundColor(Color.parseColor(tasks.color))
+                    _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(tasks.color))
                     _binding?.etNoteTitle?.setText(tasks.title)
                     _binding?.etNoteSubTitle?.setText(tasks.subTitle)
                     _binding?.etNoteDesc?.setText(tasks.noteText)
@@ -124,6 +124,7 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
 
         currentDate = sdf.format(Date())
         _binding?.colorView?.setBackgroundColor(Color.parseColor(selectedColor))
+        _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
         _binding?.tvDateTime?.text = currentDate
 
@@ -285,12 +286,14 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
                 "Blue" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     _binding?.colorView?.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
                 "Yellow" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     _binding?.colorView?.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
@@ -298,6 +301,7 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
                 "Purple" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     _binding?.colorView?.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
@@ -305,6 +309,7 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
                 "Green" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     _binding?.colorView?.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
@@ -312,6 +317,7 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
                 "Orange" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     _binding?.colorView?.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
@@ -319,6 +325,7 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
                 "Black" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     _binding?.colorView?.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
@@ -342,6 +349,7 @@ class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, E
                     _binding?.layoutWebUrl?.visibility = View.GONE
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     _binding?.colorView?.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.LayoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
             }

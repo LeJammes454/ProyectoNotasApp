@@ -26,7 +26,7 @@
             android:layout_gravity="center"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
-            android:src="@drawable/img_bar"/>
+            android:src="@drawable/ic_more"/>
     </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -251,7 +251,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/colorPrimary"
+        android:background="@color/ColorWhite"
         android:gravity="center"
         android:visibility="gone"
         android:layout_marginStart="@dimen/_10sdp"
@@ -266,7 +266,7 @@
             android:src="@drawable/ic_delete"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            app:tint="@color/ColorWhite" />
+            app:tint="@color/colorPrimaryDark" />
 
         <TextView
             android:layout_width="match_parent"
@@ -274,9 +274,9 @@
             app:layout_constraintTop_toBottomOf="@id/etNoteTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/ColorWhite"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/_12ssp"
-            android:text="Delete Note"
+            android:text="Eliminar Nota"
             android:fontFamily="@font/manrope_bold"
             android:maxLines="1"
             android:ellipsize="end"

@@ -72,7 +72,7 @@ class HomeFragment : BaseFragment() {
 
         notesAdapter.setOnClickListener(onClicked)
         _binding?.fabBtnCreateNote?.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(),true)
+            replaceFragment(CreateNoteFragment.newInstance(),false)
         }
 
         _binding?.searchView?.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
