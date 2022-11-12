@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PNotasApp</string>
+    <string name="app_name">Proyecto Notas App</string>
     <string name="notes">Mis notas</string>
     <string name="notes_title">Titulo</string>
     <string name="notes_sub_title">Sub titulo</string>

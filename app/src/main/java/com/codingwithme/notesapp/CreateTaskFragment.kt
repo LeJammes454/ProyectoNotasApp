@@ -33,7 +33,7 @@ import java.util.*
 
 class CreateTaskFragment :BaseFragment(), EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks{
 
-    var selectedColor = "#171C26"
+    var selectedColor = "#C6C1C1"
     var currentDate:String? = null
     private var READ_STORAGE_PERM = 123
     private var REQUEST_CODE_IMAGE = 456

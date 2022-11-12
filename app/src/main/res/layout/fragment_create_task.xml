@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7D7C81"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/ColorWhite">
 
     <ImageView
         android:id="@+id/imgBack"
@@ -45,7 +45,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="@dimen/_10sdp"
-        android:textColor="@color/ColorWhite"
+        android:textColor="@color/ColorBlackNote"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
             android:inputType="text"
             android:maxLines="1"
             android:padding="@dimen/_10sdp"
-            android:textColor="@color/ColorWhite"
+            android:textColor="@color/ColorBlackNote"
             android:textColorHint="@color/ColorGray"
             android:textSize="@dimen/_10ssp" />
     </LinearLayout>
@@ -239,7 +239,7 @@
         android:hint="@string/notes_desc"
         android:inputType="textMultiLine"
         android:padding="@dimen/_10sdp"
-        android:textColor="@color/ColorWhite"
+        android:textColor="@color/ColorBlackNote"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -258,7 +258,7 @@
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_gravity="center"
-            android:src="@drawable/img_bar" />
+            android:src="@drawable/ic_more" />
     </FrameLayout>
 
     <View

@@ -20,6 +20,12 @@ class HomeFragment : BaseFragment() {
     var arrNotes = ArrayList<Notes>()
     var notesAdapter: NotesAdapter = NotesAdapter()
     private var _binding:FragmentHomeBinding? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+        }
+    }
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -39,13 +45,6 @@ class HomeFragment : BaseFragment() {
         _binding = null
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
-
     companion object {
         @JvmStatic
         fun newInstance() =
@@ -57,24 +56,23 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding?.recyclerView?.setHasFixedSize(true)
+        val recyclerView = _binding?.recyclerViewM
 
-        _binding?.recyclerView?.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+         recyclerView?.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)
+        recyclerView?.setHasFixedSize(true)
 
         launch {
             context?.let {
-                var notes = NotesDatabase.getDatabase(it).noteDao().getAllNotes()
-                notesAdapter!!.setData(notes)
+                val notes = NotesDatabase.getDatabase(it).noteDao().getAllNotes()
+                notesAdapter.setData(notes)
                 arrNotes = notes as ArrayList<Notes>
-                _binding?.recyclerView?.adapter = notesAdapter
+                recyclerView?.adapter = notesAdapter
             }
         }
 
-        notesAdapter!!.setOnClickListener(onClicked)
-
-
+        notesAdapter.setOnClickListener(onClicked)
         _binding?.fabBtnCreateNote?.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(),false)
+            replaceFragment(CreateNoteFragment.newInstance(),true)
         }
 
         _binding?.searchView?.setOnQueryTextListener( object : SearchView.OnQueryTextListener{

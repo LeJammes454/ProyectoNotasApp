@@ -18,6 +18,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.codingwithme.notesapp.database.NotesDatabase
+import com.codingwithme.notesapp.databinding.FragmentCreateNoteBinding
+import com.codingwithme.notesapp.databinding.FragmentHomeBinding
 import com.codingwithme.notesapp.entities.Notes
 import com.codingwithme.notesapp.util.NoteBottomSheetFragment
 import kotlinx.android.synthetic.main.fragment_create_note.*
@@ -29,7 +31,9 @@ import java.util.*
 
 class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,EasyPermissions.RationaleCallbacks{
 
-    var selectedColor = "#171C26"
+
+
+    var selectedColor = "#C6C1C1"
     var currentDate:String? = null
     private var READ_STORAGE_PERM = 123
     private var REQUEST_CODE_IMAGE = 456
@@ -37,6 +41,26 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
     private var webLink = ""
     private var noteId = -1
 
+
+    private var _binding: FragmentCreateNoteBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentCreateNoteBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,13 +68,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_note, container, false)
-    }
+
 
     companion object {
         @JvmStatic
@@ -70,6 +88,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             launch {
                 context?.let {
                     var notes = NotesDatabase.getDatabase(it).noteDao().getSpecificNote(noteId)
+                    _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(notes.color))
                     colorView.setBackgroundColor(Color.parseColor(notes.color))
                     etNoteTitle.setText(notes.title)
                     etNoteSubTitle.setText(notes.subTitle)
@@ -107,6 +126,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
         currentDate = sdf.format(Date())
         colorView.setBackgroundColor(Color.parseColor(selectedColor))
+        _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
         tvDateTime.text = currentDate
 
@@ -115,6 +135,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 updateNote()
             }else{
                 saveNote()
+
             }
         }
 
@@ -123,8 +144,6 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
 
         imgMore.setOnClickListener{
-
-
             var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
             noteBottomSheetFragment.show(requireActivity().supportFragmentManager,"Note Bottom Sheet Fragment")
         }
@@ -196,16 +215,16 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
     private fun saveNote(){
 
         if (etNoteTitle.text.isNullOrEmpty()){
-            Toast.makeText(context,"Note Title is Required",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"La nota requiere titulo",Toast.LENGTH_SHORT).show()
         }
         else if (etNoteSubTitle.text.isNullOrEmpty()){
 
-            Toast.makeText(context,"Note Sub Title is Required",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"La nota requiere subtitulo",Toast.LENGTH_SHORT).show()
         }
 
         else if (etNoteDesc.text.isNullOrEmpty()){
 
-            Toast.makeText(context,"Note Description is Required",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"La nota requiere descripcion",Toast.LENGTH_SHORT).show()
         }
 
         else{
@@ -267,12 +286,15 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 "Blue" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
                 "Yellow" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
+                    colorinverso(true)
 
                 }
 
@@ -280,6 +302,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 "Purple" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
@@ -287,6 +310,8 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 "Green" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
+                    colorinverso(true)
 
                 }
 
@@ -294,6 +319,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 "Orange" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
@@ -301,6 +327,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 "Black" -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
 
@@ -324,11 +351,25 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                     layoutWebUrl.visibility = View.GONE
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                    _binding?.layoutPrincipal?.setBackgroundColor(Color.parseColor(selectedColor))
 
                 }
             }
         }
 
+    }
+
+    fun colorinverso(bandera:Boolean){
+        if (bandera){
+
+            _binding?.etNoteTitle?.setHintTextColor(Color.BLACK)
+            _binding?.etNoteSubTitle?.setHintTextColor(Color.BLACK)
+            _binding?.etNoteDesc?.setHintTextColor(Color.BLACK)
+        }else{
+            _binding?.etNoteTitle?.setTextColor(Color.parseColor("#fff"))
+            _binding?.etNoteSubTitle?.setTextColor(Color.parseColor("#fff"))
+            _binding?.etNoteDesc?.setTextColor(Color.parseColor("#fff"))
+        }
     }
 
     override fun onDestroy() {
